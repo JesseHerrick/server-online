@@ -5,7 +5,8 @@ useful for when you're running the server locally on a machine that you own
 
 ## Installation
 
-1. Add the plugin `jar` file to the `plugins/` folder of your Paper/Spigot MC server directory.
+1. [Download the plugin `jar` file](https://github.com/JesseHerrick/server-online/releases/download/v0.1.0/server-online.jar)
+   to the `plugins/` folder of your Paper/Spigot MC server directory.
 2. Start your Minecraft server once. On this first run, the plugin will simply copy default configuration into `plugins/ServerOnline/plugin.yml`.
 3. Stop the server.
 4. Open up `plugins/ServerOnline/plugin.yml` in your editor of choice.
