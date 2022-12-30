@@ -1,0 +1,4 @@
+name: ServerOnline
+version: '${project.version}'
+main: codes.jesse.serveronline.ServerOnline
+api-version: 1.19
