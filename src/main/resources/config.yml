@@ -1,0 +1,8 @@
+# Your Minecraft server's hostname or IP. This is just used for the text greeting, not for any sort of connection,
+# so can be left empty if desired.
+hostname: ""
+# The webhook URL provided by Discord to send messages to a specific channel as a bot.
+#
+# In Discord, choose a channel, right-click it, go to Edit Channel > Integrations > Webhooks > New Webhooks
+# Click "Copy Webhook URL" and paste it below.
+discord_webhook_url: ""
