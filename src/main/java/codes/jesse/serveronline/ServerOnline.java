@@ -3,16 +3,22 @@ package codes.jesse.serveronline;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class ServerOnline extends JavaPlugin {
+    private static ServerOnline plugin;
+
     @Override
     public void onEnable() {
+        plugin = this;
+
         saveDefaultConfig();
 
-        sendMessage("Minecraft server started! :zap: :hammer_pick:\n" + buildHostnameGreeting());
+        getServer().getPluginManager().registerEvents(new PlayerPresenceListener(), this);
+
+        new DiscordMessage("Minecraft server started! :zap: :hammer_pick:\n" + buildHostnameGreeting()).send();
     }
 
     @Override
     public void onDisable() {
-        sendMessage("Minecraft server shut down. :sleeping: :zzz:");
+        new DiscordMessage("Minecraft server shut down. :sleeping: :zzz:").send();
     }
 
     private String getHostname() {
@@ -34,23 +40,17 @@ public final class ServerOnline extends JavaPlugin {
         }
     }
 
-    private void sendMessage(String message) {
-        try {
-            DiscordMessage dm = new DiscordMessage(this, message);
-            dm.send();
-        } catch (Exception e) {
-            getLogger().warning(e.getMessage());
-        }
-    }
-
-
-    public String getConfigString(String path) throws Exception {
+    public String getConfigString(String path) {
         String value = this.getConfig().getString(path);
 
         if (value == null || value.equals("")) {
-            throw new Exception("'" + path + "'" + " is blank in your config.yml file. Please add a value.");
+            return "";
         } else {
             return value;
         }
+    }
+
+    public static ServerOnline getPlugin() {
+        return plugin;
     }
 }
